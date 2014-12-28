@@ -157,18 +157,18 @@ void Tictactoe::selectFirst()
          << "or 2 for " << p2Name << ". Enter -1 to quit. Select a player: ";
     do{
         cin >> turn;
-        cout << endl << endl;
-        if(!cin && turn != 1 && turn != 2)
+        cout << endl;
+        if((!cin) || (turn != 1 && turn != 2))
         {
             cin.clear();
             cin.ignore(256, '\n');
 
             cout << "Invalid input! Please ensure that you selected" << endl
-                 << "a valid player (1 for " << p1Name << ", 2 for " << p2Name << ")." << endl
+                 << "a valid player (1 for " << p1Name << ", 2 for " << p2Name << ")." << endl << endl;
                  << "Please select who will go first (or -1 to quit): ";
             turn = 0;
         }
-    }while(turn != 1 && turn != 2);
+    }while((!cin) || (turn != 1 && turn != 2));
 
     switch(turn)
     {
@@ -366,7 +366,7 @@ void Tictactoe::printEndPlayerStats()
     int totalGames = p1Score + p2Score;
     cout << p1Name << " won " << (static_cast<double>(p1Score) / totalGames) * 100 << "% of the games played (" << p1Score << "/" << totalGames << ")." << endl
          << p1Name << " won " << (static_cast<double>(p2Score) / totalGames) * 100 << "% of the games played (" << p2Score << "/" << totalGames << ")." << endl << endl
-         << "Thank you for playing my Tic-Tac-Toe game!" << endl << endl;
+         << "Thank you for playing my Tic-Tac-Toe game!" << endl;
 
 }
 
